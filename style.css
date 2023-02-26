@@ -80,6 +80,7 @@ main > section.hero {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  z-index: 1;
   /* make this banner stick to the top! */
 }
 
@@ -99,6 +100,11 @@ section.hero > button {
   text-transform: uppercase;
 }
 
+section.hero {
+  position: sticky;
+  top: 0;
+}
+
 main article {
   padding: 48px 96px;
 }
@@ -114,6 +120,15 @@ main > article img {
   height: auto;
   margin-right: 24px;
   margin-bottom: 6px;
+}
+
+.dropcap::first-letter {
+  font-size: 100px;
+  line-height: 1;
+  float: left;
+  margin: 0 30px 0 20px;
+  font-family: serif;
+  font-style: bold;
 }
 
 footer {
@@ -141,15 +156,37 @@ span.tooltip:focus {
 /* show tooltip on hover/focus */
 span.tooltip:hover > span,
 span.tooltip:focus > span {
-  display: inline;
+  visibility: visible;
+  position: absolute;
 }
 
 /* styling for tooltip bubble */
 span.tooltip span {
-  display: none;
+  visibility: hidden;
+  position: absolute;
+  width: 250px;
+  text-align: center;
+  display: flex;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  bottom: 170%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 25px;
 }
 
 /* styling for tooltip bubble arrow */
 span.tooltip span::after {
-  content: "";
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: black;
+  border-bottom: 0;
+  margin-left: -20px;
+  margin-bottom: -20px;
 }
